@@ -161,6 +161,7 @@ static void BUT_init(void) {
 	NVIC_SetPriority(ECHO_PIO_ID, 4);
 }
 
+
 static void RTT_init(float freqPrescale, uint32_t IrqNPulses, uint32_t rttIRQSource) {
 
 	uint16_t pllPreScale = (int) (((float) 32768) / freqPrescale);
@@ -186,6 +187,8 @@ static void RTT_init(float freqPrescale, uint32_t IrqNPulses, uint32_t rttIRQSou
 	rtt_enable_interrupt(RTT, rttIRQSource);
 	else
 	rtt_disable_interrupt(RTT, RTT_MR_RTTINCIEN | RTT_MR_ALMIEN);
+	
+}
 
 void pin_toggle(Pio *pio, uint32_t mask) {
 	pio_set(pio, mask);	
